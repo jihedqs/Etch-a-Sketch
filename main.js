@@ -18,7 +18,7 @@ function board(size) {
   let pow = size * size;
   for (let i = 0; i < pow; i++) {
     let square = document.createElement("div");
-    square.count = 1;
+    square.count = 0;
     square.addEventListener("mouseover", (e) => {
       if (click) {
         if (color === "black") {
@@ -27,7 +27,7 @@ function board(size) {
         } else if (color === "modern") {
           e.target.style.backgroundColor = "#707070";
           e.target.count += 1;
-          e.target.style.opacity = 0.2 * e.target.count;
+          e.target.style.opacity = 0.4 * e.target.count;
         } else if (color === "random") {
           const psychedelicPallete = [
             "#EF476F",
@@ -42,11 +42,12 @@ function board(size) {
           e.target.style.opacity = 1;
           e.target.style.backgroundColor = psychedelicPallete[randomColor];
         } else {
-          e.target.style.backgroundColor = "white";
+          e.target.style.backgroundColor = "#D8D8D8";
+          e.target.style.opacity = "1";
         }
       }
     });
-    square.style.backgroundColor = "rgba(0, 0, 0, 0.06)";
+    square.style.backgroundColor = "#D8D8D8";
     square.style.borderTop = "1px solid rgba(0, 0, 0, 0.16)";
     square.style.borderRight = "1px solid rgba(0, 0, 0, 0.16)";
     gridButton.addEventListener("click", toggleGridLines);
@@ -62,7 +63,7 @@ function changeColor(choice) {
 
 function changeSize(input) {
   board(input);
-  document.querySelector(".value").textContent = input;
+  document.querySelector("label").textContent = input + "x" +input;
 }
 
 //reset button
@@ -70,7 +71,7 @@ function reset() {
   let board = document.querySelector(".board");
   let squares = board.querySelectorAll("div");
   squares.forEach((div) => {
-    div.style.backgroundColor = "white";
+    div.style.backgroundColor = "#D8D8D8";
   });
 }
 //when click stop and when click again color
