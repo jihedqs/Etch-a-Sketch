@@ -1,0 +1,9 @@
+.board {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  border: 3px solid black;
+}
+.active{
+  background-color: yellow;
+}
